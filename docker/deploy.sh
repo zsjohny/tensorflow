@@ -9,7 +9,7 @@ export VERSION=$1
 source $PGRDIR/env.sh
 
 # only set VERSION if not set
-[ -z "$VERSION" ] && VERSION=latest
+[ -z "$VERSION" ] && VERSION=1.0
 
 # break shell when fail
 set -e
