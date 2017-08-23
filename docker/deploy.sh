@@ -3,10 +3,9 @@
 # Author: Johny
 
 export PGRDIR=$(cd `dirname $0`; pwd)
-export WORKSPACE=$PGRDIR/../
+WORKSPACE=$PGRDIR
 export VERSION=$1
-
-source $PGRDIR/env.sh
+source $WORKSPACE/env.sh
 
 # only set VERSION if not set
 [ -z "$VERSION" ] && VERSION=1.0

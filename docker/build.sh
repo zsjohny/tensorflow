@@ -3,7 +3,7 @@
 # Author: Johny
 
 export PGRDIR=$(cd `dirname $0`; pwd)
-export WORKSPACE=$PGRDIR/../
+export WORKSPACE=$PGRDIR
 export VERSION=$1
 
 source $PGRDIR/env.sh
@@ -15,4 +15,4 @@ source $PGRDIR/env.sh
 set -e
 
 # main release image
-docker build -t $DOCKER_REGISTRY_URL/$DOCKER_IMAGE_NAME:$VERSION -f $WORKSPACE/Dockerfile $WORKSPACE
+docker build -t $DOCKER_REGISTRY_URL/$DOCKER_IMAGE_NAME:$VERSION -f $PGRDIR/Dockerfile $WORKSPACE
