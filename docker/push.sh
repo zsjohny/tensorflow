@@ -3,7 +3,7 @@
 # Author: Johny
 
 export PGRDIR=$(cd `dirname $0`; pwd)
-export WORKSPACE=$PGRDIR
+export WORKSPACE=$PGRDIR/../
 export VERSION=$1
 
 source $PGRDIR/env.sh
