@@ -17,3 +17,5 @@ set -e
 # doing
 ############################################################
 cd $PGRDIR && docker-compose -p $DOCKER_INSTANCE_NAME up -d
+
+docker logs -f $DOCKER_INSTANCE_NAME

@@ -1,15 +1,16 @@
 # https://github.com/tensorflow/tensorflow/tree/master/tensorflow/tools/docker
 # https://hub.docker.com/r/tensorflow/tensorflow/
 tensorflow:
-    image: "$DOCKER_REGISTRY_URL/$DOCKER_IMAGE_NAME:$VERSION"
+    image: registry.kuick.cn/cc/tensorflow:1.0
     container_name: tensorflow
     hostname: tensorflow
 #    environment:
     volumes:
-      - ../train:/train
-      - ../config/:/.jupyter/
+      - ../train:/notebooks/train
+      - ../tensorflow-source/tensorflow/examples:/notebooks/example
+#      - ../config/:/.jupyter/
 
     ports:
       - 8888:8888
-#    restart: always
+    restart: always
 
