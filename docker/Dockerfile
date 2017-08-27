@@ -14,7 +14,8 @@ RUN pip install ipyparallel
 RUN ipcluster nbextension enable
 
 # Set localtime
-COPY ./release/docker/localtime /etc/localtime
+COPY localtime /etc/localtime
 
 EXPOSE 8888
+
 CMD ["jupyter", "notebook", "--port=8888", "--no-browser", "--ip=0.0.0.0", "--allow-root"]

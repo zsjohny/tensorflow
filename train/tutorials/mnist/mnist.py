@@ -43,10 +43,12 @@ def inference(images, hidden1_units, hidden2_units):
   """
   # Hidden 1
   with tf.name_scope('hidden1'):
+    # 权重
     weights = tf.Variable(
         tf.truncated_normal([IMAGE_PIXELS, hidden1_units],
                             stddev=1.0 / math.sqrt(float(IMAGE_PIXELS))),
         name='weights')
+    # 偏移
     biases = tf.Variable(tf.zeros([hidden1_units]),
                          name='biases')
     hidden1 = tf.nn.relu(tf.matmul(images, weights) + biases)

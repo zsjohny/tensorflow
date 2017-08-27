@@ -61,7 +61,7 @@ def main(_):
 
 if __name__ == '__main__':
   parser = argparse.ArgumentParser()
-  print('downloading data to ./tmp/tensorflow/mnist/input_data'),
+  print('downloading data to /tmp/tensorflow/mnist/input_data'),
   parser.add_argument('--data_dir', type=str, default='/tmp/tensorflow/mnist/input_data',
                       help='Directory for storing input data')
   FLAGS, unparsed = parser.parse_known_args()
