@@ -54,6 +54,8 @@ def fill_feed_dict(data_set, images_pl, labels_pl):
       ....
   }
 
+  # placeholder_inputs()函数将生成两个tf.placeholder操作，定义传入图表中的shape参数，shape参数中包括batch_size值，后续还会将实际的训练用例传入图表。
+  # 在训练循环（training loop）的后续步骤中，传入的整个图像和标签数据集会被切片，以符合每一个操作所设置的batch_size值，占位符操作将会填补以符合这个batch_size值。然后使用feed_dict参数，将数据传入sess.run()函数。
   Args:
     data_set: The set of images and labels, from input_data.read_data_sets()
     images_pl: The images placeholder, from placeholder_inputs().
@@ -135,12 +137,14 @@ def run_training():
     init = tf.global_variables_initializer()
 
     # Create a saver for writing training checkpoints.
+    # 为了得到可以用来后续恢复模型以进一步训练或评估的检查点文件（checkpoint file），我们实例化一个tf.train.Saver。
     saver = tf.train.Saver()
 
     # Create a session for running Ops on the Graph.
     sess = tf.Session()
 
     # Instantiate a SummaryWriter to output summaries and the Graph.
+    # 在创建好会话（session）之后，可以实例化一个tf.train.SummaryWriter，用于写入包含了图表本身和即时数据具体值的事件文件。
     summary_writer = tf.summary.FileWriter(FLAGS.log_dir, sess.graph)
 
     # And then after everything is built:
@@ -173,6 +177,7 @@ def run_training():
         # Print status to stdout.
         print('Step %d: loss = %.2f (%.3f sec)' % (step, loss_value, duration))
         # Update the events file.
+        # 每次运行summary_op时，都会往事件文件中写入最新的即时数据，函数的输出会传入事件文件读写器（writer）的add_summary()函数。
         summary_str = sess.run(summary, feed_dict=feed_dict)
         summary_writer.add_summary(summary_str, step)
         summary_writer.flush()
@@ -187,6 +192,7 @@ def run_training():
                 eval_correct,
                 images_placeholder,
                 labels_placeholder,
+                # 55000个图像和标签（labels），作为主要训练集。
                 data_sets.train)
         # Evaluate against the validation set.
         print('Validation Data Eval:')
@@ -194,6 +200,7 @@ def run_training():
                 eval_correct,
                 images_placeholder,
                 labels_placeholder,
+                # 5000个图像和标签，用于迭代验证训练准确度。
                 data_sets.validation)
         # Evaluate against the test set.
         print('Test Data Eval:')
@@ -201,6 +208,7 @@ def run_training():
                 eval_correct,
                 images_placeholder,
                 labels_placeholder,
+                # 10000个图像和标签，用于最终测试训练准确度（trained accuracy）
                 data_sets.test)
 
 

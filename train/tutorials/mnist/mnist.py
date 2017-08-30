@@ -30,6 +30,13 @@ IMAGE_SIZE = 28
 IMAGE_PIXELS = IMAGE_SIZE * IMAGE_SIZE
 
 
+  # 在为数据创建占位符之后，就可以运行mnist.py文件，经过三阶段的模式函数操作：inference()， loss()，和training()。图表就构建完成了。
+  # 1.inference() —— 尽可能地构建好图表，满足促使神经网络向前反馈并做出预测的要求。
+
+  # 2.loss() —— 往inference图表中添加生成损失（loss）所需要的操作（ops）。
+
+  # 3.training() —— 往损失图表中添加计算并应用梯度（gradients）所需的操作。
+
 def inference(images, hidden1_units, hidden2_units):
   """Build the MNIST model up to where it may be used for inference.
 
