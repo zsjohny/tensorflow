@@ -2,7 +2,8 @@
 # https://hub.docker.com/r/tensorflow/tensorflow/
 tensorflow:
     # zsjohny/tensorflow
-    image: registry.kuick.cn/cc/tensorflow:latest
+    # registry.kuick.cn/cc/tensorflow:latest
+    image: zsjohny/tensorflow
     container_name: tensorflow
     hostname: tensorflow
 #    environment:
