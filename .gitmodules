@@ -1,6 +1,6 @@
 [submodule "tensorflow-source"]
 	path = tensorflow-source
-	url = git@github.com:zsjohny/tensorflow-source.git
+	url = https://github.com/zsjohny/tensorflow-source.git
 [submodule "models"]
 	path = models
-	url = git@github.com:tensorflow/models.git
+	url = https://github.com/tensorflow/models.git
