@@ -9,9 +9,11 @@ tensorflow:
 #    environment:
     volumes:
       - ../train:/notebooks/train
+      - ../demo:/notebooks/demo
       - ../tensorflow-source/tensorflow/examples:/notebooks/example
       - ../tensorflow-source/tensorflow:/notebooks/tensorflow
       - ../models:/notebooks/models
+      - ../data:/tmp
 #      - ../config/:/.jupyter/
     ports:
       - 8888:8888

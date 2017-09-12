@@ -103,3 +103,5 @@ ENV/
 Opportunity_Info
 venv
 .idea
+
+data/tensorflow/mnist/*

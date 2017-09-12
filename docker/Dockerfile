@@ -13,6 +13,9 @@ RUN pip install ipyparallel
 
 RUN ipcluster nbextension enable
 
+# Install pkg
+RUN apt install python-tk
+
 # Set localtime
 COPY localtime /etc/localtime
 
