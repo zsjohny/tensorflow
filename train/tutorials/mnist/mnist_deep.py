@@ -17,6 +17,7 @@ from __future__ import print_function
 import argparse
 import sys
 import tempfile
+import logging
 
 from tensorflow.examples.tutorials.mnist import input_data
 
@@ -132,10 +133,10 @@ def main(_):
   # Import data
   mnist = input_data.read_data_sets(FLAGS.data_dir, one_hot=True)
 
-  # Create the model
+  # Create the model 客户的行为
   x = tf.placeholder(tf.float32, [None, 784])
 
-  # Define loss and optimizer
+  # Define loss and optimizer  成交结果 1/0 [[ 0.  0.  0.  0.  0.  0.  0.  0.  1.  0.]]
   y_ = tf.placeholder(tf.float32, [None, 10])
 
   # Build the graph for the deep net
@@ -153,6 +154,10 @@ def main(_):
 
   with tf.name_scope('accuracy'):
     correct_prediction = tf.equal(tf.argmax(y_conv, 1), tf.argmax(y_, 1))
+    print("aaaa") 
+    # print "correct_prediction is:"
+    print(correct_prediction)
+    print(type(correct_prediction))
     correct_prediction = tf.cast(correct_prediction, tf.float32)
   accuracy = tf.reduce_mean(correct_prediction)
 
@@ -161,14 +166,23 @@ def main(_):
   train_writer = tf.summary.FileWriter(graph_location)
   train_writer.add_graph(tf.get_default_graph())
 
+#####真正训练的逻辑开始##[customer([numpy.ndarray]0,0,0,0,0多维数组),deal_result]
   with tf.Session() as sess:
     sess.run(tf.global_variables_initializer())
-    for i in range(20000):
-      batch = mnist.train.next_batch(50)
-      if i % 100 == 0:
+#    for i in range(20000):
+#        batch = mnist.train.next_batch(50)
+#        if i % 100 == 0:
+    for i in range(10):
+      batch = mnist.train.next_batch(1)
+      if i % 1 == 0:
         train_accuracy = accuracy.eval(feed_dict={
             x: batch[0], y_: batch[1], keep_prob: 1.0})
         print('step %d, training accuracy %g' % (i, train_accuracy))
+        print("****************************")
+        print(batch[0])
+        print(type(batch[0]))  
+        print(batch[1])
+        print("****************************")
       train_step.run(feed_dict={x: batch[0], y_: batch[1], keep_prob: 0.5})
 
     print('test accuracy %g' % accuracy.eval(feed_dict={
