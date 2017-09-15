@@ -169,6 +169,9 @@ def main(_):
 #####真正训练的逻辑开始##[customer([numpy.ndarray]0,0,0,0,0多维数组),deal_result]
   with tf.Session() as sess:
     sess.run(tf.global_variables_initializer())
+#    for i in range(20000):
+#        batch = mnist.train.next_batch(50)
+#        if i % 100 == 0:
     for i in range(10):
       batch = mnist.train.next_batch(1)
       if i % 1 == 0:
