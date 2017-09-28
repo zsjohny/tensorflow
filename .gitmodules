@@ -10,3 +10,9 @@
 [submodule "tutorials"]
 	path = tutorials
 	url = https://github.com/MorvanZhou/tutorials.git
+[submodule "deep_learning"]
+	path = deep_learning
+	url = https://github.com/BDFYB/deep_learning.git
+[submodule "mnist"]
+	path = mnist
+	url = https://github.com/zsjohny/mnist.git
